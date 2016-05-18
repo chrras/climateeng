@@ -1,4 +1,4 @@
-slope.rel.hum <- function(temp.1, temp.2, rel.hum) {
+slope_rel_hum <- function(temp.1, temp.2, rel.hum) {
   #' Slope of relative humidity line
   #'
   #' Calculate slope of relative humidity line.
@@ -9,8 +9,8 @@ slope.rel.hum <- function(temp.1, temp.2, rel.hum) {
   #' @keywords indoor climate
   #' @export
   #' @examples
-  #' slope.rel.hum <- function(15, 20, 80)
-  #' @author Christoffer Rasmussen, MSc in Engineering
+  #' slope_rel_hum(15, 20, 80)
+  #' @author Christoffer Rasmussen
 
   x1 <- temp.1
   x2 <- temp.2

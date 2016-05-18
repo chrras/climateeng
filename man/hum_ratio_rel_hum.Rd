@@ -4,12 +4,14 @@
 \alias{hum_ratio_rel_hum}
 \title{Humidity ratio (W)}
 \usage{
-hum_ratio_rel_hum(rel.hum, temp.air, hum_ratio_max, alt = 0)
+hum_ratio_rel_hum(rel.hum, temp.air, hum.ratio.max, alt = 0)
 }
 \arguments{
 \item{rel.hum}{Vector of relative humidities [\%].}
 
 \item{temp.air}{Vector of air temperatures [degC].}
+
+\item{hum.ratio.max}{Max humidity ratio on psychrometric chart [kg/kg].}
 
 \item{alt}{Vector of altitudes [m]. Defaults to 0 m (sea level).}
 }
@@ -18,13 +20,13 @@ Returns a vector of humidity ratios [kg/kg].
 }
 \description{
 Calculates the humidity ratio from relative humidity and temperature.
-Eq. 25 & 12 - ASHRAE Fundamentals Handbook, Psychrometrics.
+Eq. 25 & 12 - ASHRAE Fundamentals Handbook 2002, Psychrometrics.
 }
 \examples{
-hum_ratio_rel_hum(rel.hum = 60, temp.air = 25, alt = 0)
+hum_ratio_rel_hum(rel.hum = 60, temp.air = 25, hum.ratio.max = 0.02)
 }
 \author{
-Christoffer Rasmussen, MSc in Engineering
+Christoffer Rasmussen
 }
 \keyword{internal}
 

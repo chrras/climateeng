@@ -7,7 +7,7 @@
 theme_parms()
 }
 \value{
-Returns a ggplot2 theme.
+Returns a list of ggplot2 theme parameters.
 }
 \description{
 Parameters for climateeng themes.
@@ -16,7 +16,7 @@ Parameters for climateeng themes.
 theme_parms()
 }
 \author{
-Christoffer Rasmussen, MSc in Engineering
+Christoffer Rasmussen
 }
 \keyword{internal}
 

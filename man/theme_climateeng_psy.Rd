@@ -19,7 +19,7 @@ Custom theme for climateeng psychrometric chart.
 theme_climateeng_psy()
 }
 \author{
-Christoffer Rasmussen, MSc in Engineering
+Christoffer Rasmussen
 }
 \keyword{internal}
 

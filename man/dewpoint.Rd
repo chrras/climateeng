@@ -15,21 +15,19 @@ dewpoint(hum.ratio, alt = 0)
 Returns a vector of dew-point temperatures [degC].
 }
 \description{
-Calculates the dew-point temperature based on absolute humidity.
-Eq.37 & 38 - ASHRAE Fundamentals Handbook, Psychrometrics.
+Calculates the dew-point temperature based on humidity ratios.
+Eq. 37 & 38 - ASHRAE Fundamentals Handbook 2002, Psychrometrics.
 }
 \examples{
 dewpoint(hum.ratio = 0.010)
 
 hum.ratio = seq(0, 0.050, by = 0.001)
-rel.hum = rel.hum(temp.air = dewpoint(hum.ratio = hum.ratio), hum.ratio = hum.ratio, round = F)
-plot(hum.ratio, rel.hum - 100,
-   xlab = "Humidity ratio [g/kg]",
-   ylab = "Relative humidity difference [\%]",
-   main = "Deviation from 100 \% relative humidity")
+plot(dewpoint(hum.ratio = hum.ratio), hum.ratio,
+     xlab = "Dew-point [degC]",
+     ylab = "Humidity ratio [kg/kg]")
 }
 \author{
-Christoffer Rasmussen, MSc in Engineering
+Christoffer Rasmussen
 }
 \keyword{climate}
 \keyword{indoor}

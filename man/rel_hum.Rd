@@ -4,7 +4,7 @@
 \alias{rel_hum}
 \title{Relative humidity (phi)}
 \usage{
-rel_hum(temp.air, hum.ratio, alt = 0, round = TRUE)
+rel_hum(temp.air, hum.ratio, alt = 0)
 }
 \arguments{
 \item{temp.air}{Vector of air temperatures [degC].}
@@ -12,22 +12,20 @@ rel_hum(temp.air, hum.ratio, alt = 0, round = TRUE)
 \item{hum.ratio}{Vector of humidity ratios [kg/kg]}
 
 \item{alt}{Vector of altitudes [m]. Defaults to 0 m (sea level).}
-
-\item{round}{Boolean operator. If TRUE (default) calculated relative humidities above satuation level will be rounded to 100 \%.}
 }
 \value{
 Returns a vector of relative humidities [\%].
 }
 \description{
 Calculates relative humidity.
-Eq.24 - ASHRAE Fundamentals Handbook, Psychrometrics.
+Eq. 24 - ASHRAE Fundamentals Handbook 2002, Psychrometrics.
 }
 \examples{
-rel_hum(temp.air = 25, hum.ratios = 0.005, alt = 500)
-rel_hum(temp.air = seq(10, 20, 2), hum.ratios = 0.010)
+rel_hum(temp.air = 25, hum.ratio = 0.005, alt = 500)
+rel_hum(temp.air = seq(10, 20, 2), hum.ratio = 0.010)
 }
 \author{
-Christoffer Rasmussen, MSc in Engineering
+Christoffer Rasmussen
 }
 \keyword{climate}
 \keyword{indoor}

@@ -2,14 +2,14 @@ sat_w_press <- function(temp.air) {
   #' Satuated water vapour pressure (p_ws)
   #'
   #' Calculates the satuated water vapour pressure over water and ice.
-  #' Eq.5 & 6 - ASHRAE Fundamentals Handbook, Psychrometrics.
+  #' Eq.5 & 6 - ASHRAE Fundamentals Handbook 2002, Psychrometrics.
   #' @param temp.air Vector of air temperatures [degC].
   #' @return Returns a vector of satuated water pressure over water and ice [kPa].
   #' @keywords indoor climate
   #' @export
   #' @examples
   #' sat_w_press(temp.air = 25)
-  #' @author Christoffer Rasmussen, MSc in Engineering
+  #' @author Christoffer Rasmussen
 
   temp.air <- temp.air + 273.15
 

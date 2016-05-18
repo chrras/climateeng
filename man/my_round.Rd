@@ -24,7 +24,7 @@ my_round(24.9, 5, 'floor')
 my_round(c(24.9, 20.1, 25), 5, 'ceiling')
 }
 \author{
-Christoffer Rasmussen, MSc in Engineering
+Christoffer Rasmussen
 }
 \keyword{internal}
 

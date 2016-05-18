@@ -16,13 +16,13 @@ Returns a vector of specific volumes [m3/kg].
 }
 \description{
 Calculates the specific volume
-Eq.28 (alternative) - ASHRAE Fundamentals Handbook, Psychrometrics.
+Eq. 28 (alternative) - ASHRAE Fundamentals Handbook 2002, Psychrometrics.
 }
 \examples{
 specific_vol(25, 0.010)
 }
 \author{
-Christoffer Rasmussen, MSc in Engineering
+Christoffer Rasmussen
 }
 \keyword{climate}
 \keyword{indoor}

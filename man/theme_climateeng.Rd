@@ -16,7 +16,7 @@ Custom theme for climateeng plots.
 theme_climateeng()
 }
 \author{
-Christoffer Rasmussen, MSc in Engineering
+Christoffer Rasmussen
 }
 \keyword{internal}
 

@@ -16,7 +16,7 @@ Returns a vector of enthalpies [kJ/kg].
 }
 \description{
 Calculates the enthalpy of a given moist air state.
-Eq.32 - ASHRAE Fundamentals Handbook, Psychrometrics.
+Eq. 32 - ASHRAE Fundamentals Handbook 2002, Psychrometrics.
 }
 \examples{
 enthalpy(25, 0.010)
@@ -26,7 +26,7 @@ density <- 1.2 # density of air (kg/m3)
 (enthalpy(35, 0.020) - enthalpy(15, 0.010)) * density
 }
 \author{
-Christoffer Rasmussen, MSc in Engineering
+Christoffer Rasmussen
 }
 \keyword{climate}
 \keyword{indoor}

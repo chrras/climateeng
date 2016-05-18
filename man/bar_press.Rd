@@ -13,17 +13,17 @@ bar_press(alt = 0)
 Returns a vector of barometric pressure [kPa].
 }
 \description{
-Calculates barometric pressure based on altitude. This is also called total pressure.
-Eq.3 - ASHRAE Fundamentals Handbook, Psychrometrics.
+Calculates barometric pressure based on altitude. This is also called total
+ pressure.
+Eq. 3 - ASHRAE Fundamentals Handbook 2002, Psychrometrics.
 }
 \examples{
-# Calculate barometric pressure at sea level
 bar_press()
-# Calculate barometric pressure 1000 m above sea level
+
 bar_press(alt = 1000)
 }
 \author{
-Christoffer Rasmussen, MSc in Engineering
+Christoffer Rasmussen
 }
 \keyword{climate}
 \keyword{indoor}

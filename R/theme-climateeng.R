@@ -7,7 +7,7 @@ theme_climateeng <- function() {
   #' @export
   #' @examples
   #' theme_climateeng()
-  #' @author Christoffer Rasmussen, MSc in Engineering
+  #' @author Christoffer Rasmussen
 
   # Generate the colors for the chart procedurally with RColorBrewer
   p <- theme_parms()

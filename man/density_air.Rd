@@ -18,13 +18,13 @@ Returns a vector of densities of moist air [kg/m3].
 }
 \description{
 Calculates the density of moist air.
-Eq. 11 - ASHRAE Fundamentals Handbook, Psychrometrics.
+Eq. 11 - ASHRAE Fundamentals Handbook 2002, Psychrometrics.
 }
 \examples{
 density_air(temp.air = 25, hum.ratio = c(0, 0.01, 0.02))
 }
 \author{
-Christoffer Rasmussen, MSc in Engineering
+Christoffer Rasmussen
 }
 \keyword{climate}
 \keyword{indoor}

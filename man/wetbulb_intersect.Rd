@@ -12,18 +12,20 @@ wetbulb_intersect(temp.wb, alt = 0)
 \item{alt}{Vector of altitudes [m]. Defaults to 0 m (sea level).}
 }
 \value{
-Returns a vector of dry-bulb temperatures at which the wet-bulb temperature line intersects [degC].
+Returns a vector of dry-bulb temperatures at which the wet-bulb
+  temperature line intersects [degC].
 }
 \description{
-Calculates the drybulb temperature at which the wetbulb temperature line intersects in the psychrometric chart.
-Eq.32 - ASHRAE Fundamentals Handbook, Psychrometrics.
+Calculates the drybulb temperature at which the wetbulb temperature line
+intersects in the psychrometric chart.
+Eq. 32 - ASHRAE Fundamentals Handbook 2002, Psychrometrics.
 }
 \examples{
 wetbulb_intersect(15)
 wetbulb_intersect(15, alt = 1000)
 }
 \author{
-Christoffer Rasmussen, MSc in Engineering
+Christoffer Rasmussen
 }
 \keyword{internal}
 

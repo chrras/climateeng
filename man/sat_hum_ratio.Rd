@@ -15,13 +15,13 @@ sat_hum_ratio(temp.air, alt = 0)
 Returns a vector of water vapour content at satuatuation [kg/kg].
 }
 \description{
-Eq. 23 - ASHRAE Fundamentals Handbook, Psychrometrics.
+Eq. 23 - ASHRAE Fundamentals Handbook 2002, Psychrometrics.
 }
 \examples{
 sat_hum_ratio(temp.air = 25, alt = 0)
 }
 \author{
-Christoffer Rasmussen, MSc in Engineering
+Christoffer Rasmussen
 }
 \keyword{climate}
 \keyword{indoor}

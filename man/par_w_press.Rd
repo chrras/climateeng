@@ -16,7 +16,7 @@ Returns a vector of partial water vapour pressure [kPa].
 }
 \description{
 Calculates partial water vapour pressure.
-Eq.36 - ASHRAE Fundamentals Handbook, Psychrometrics.
+Eq. 36 - ASHRAE Fundamentals Handbook 2002, Psychrometrics.
 }
 \examples{
 par_w_press(hum.ratio = 0.010)
@@ -26,7 +26,7 @@ alt <- rep(c(0, 500), each = 2)
 par_w_press(hum.ratio, alt)
 }
 \author{
-Christoffer Rasmussen, MSc in Engineering
+Christoffer Rasmussen
 }
 \keyword{climate}
 \keyword{indoor}

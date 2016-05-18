@@ -30,7 +30,7 @@ psychrometric_chart <- function(temp.db = NULL, hum.ratio = NULL,
   #' psychrometric_chart(temp.db, hum.ratio, alpha = 1)
   #'
   #' psychrometric_chart(temp.db, hum.ratio, temp.min=5, mollier = TRUE, alpha = 1)
-  #' @author Christoffer Rasmussen, MSc in Engineering
+  #' @author Christoffer Rasmussen
 
   # Plot parameters ---------------------------------------------------------
 
@@ -111,7 +111,9 @@ psychrometric_chart <- function(temp.db = NULL, hum.ratio = NULL,
     if (i %in% c(0, 100)) {
       # Border curve
       p <- p + stat_function(fun = hum_ratio_rel_hum,
-                             args = list(alt = alt, rel.hum = i, humidity.max),
+                             args = list(alt = alt,
+                                         rel.hum = i,
+                                         hum.ratio.max = humidity.max),
                              n = N,
                              size = theme$size.line * LINE.MULTIPLIER,
                              geom = "line",
@@ -119,7 +121,9 @@ psychrometric_chart <- function(temp.db = NULL, hum.ratio = NULL,
     } else {
       # Other RH curves
       p <- p + stat_function(fun = hum_ratio_rel_hum,
-                             args = list(alt = alt, rel.hum = i, humidity.max),
+                             args = list(alt = alt,
+                                         rel.hum = i,
+                                         hum.ratio.max = humidity.max),
                              n = N,
                              size = theme$size.line,
                              geom = "line",
@@ -203,9 +207,10 @@ psychrometric_chart <- function(temp.db = NULL, hum.ratio = NULL,
   # Add lines
   for (i in seq(start, end, 10)) {
     p <- p + stat_function(fun = hum_ratio_enthalpy,
-                           args = list(enthalpy = i, alt),
+                           args = list(enthalpy = i, alt = alt),
                            n = N,
                            size = theme$size.line,
+                           geom = "line",
                            col = theme$color.grid.major)
   }
 
@@ -261,7 +266,7 @@ psychrometric_chart <- function(temp.db = NULL, hum.ratio = NULL,
                y = hum_ratio(i, temp),
                size = theme$text.size.axis / FONT.SCALE,
                label =  label,
-               angle = deg + k * slope.rel.hum(temp.1, temp.2, i),
+               angle = deg + k * slope_rel_hum(temp.1, temp.2, i),
                col = theme$color.axis.text)
   }
 
@@ -300,7 +305,7 @@ psychrometric_chart <- function(temp.db = NULL, hum.ratio = NULL,
                y = sat_hum_ratio(intersect, alt),
                size = theme$text.size.axis / FONT.SCALE,
                label =  label,
-               angle = deg + k * slope.rel.hum(intersect - 0.5, intersect + 0.5, 100),
+               angle = deg + k * slope_rel_hum(intersect - 0.5, intersect + 0.5, 100),
                col = theme$color.axis.text)
   }
 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/enthalpy-intersect.R
 \name{enthalpy_intersect}
 \alias{enthalpy_intersect}
-\title{Enthalpy and 100 \% RH intersection}
+\title{Intersection between enthalpy line and 100 \% RH line}
 \usage{
 enthalpy_intersect(enthalpy, alt = 0)
 }
@@ -12,7 +12,8 @@ enthalpy_intersect(enthalpy, alt = 0)
 \item{alt}{Vector of altitudes [m]. Defaults to 0 m (sea level).}
 }
 \value{
-Returns the dry-bulb temperature where at which the enthalpy and 100 \% RH line intersects [degC].
+Returns the dry-bulb temperature at which the enthalpy and
+  100 \% RH line intersects [degC].
 }
 \description{
 Calculates the intersection of RH 100 \% line and the enthalpy line.
@@ -21,7 +22,7 @@ Calculates the intersection of RH 100 \% line and the enthalpy line.
 enthalpy_intersect(enthalpy = 50)
 }
 \author{
-Christoffer Rasmussen, MSc in Engineering
+Christoffer Rasmussen
 }
 \keyword{internal}
 

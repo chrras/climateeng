@@ -43,7 +43,7 @@ pmv <- function(clo, temp.air, temp.rad, rel.hum, met = 1.2, wme = 0, air.velo =
   #'
   #' pmv <- pmv(clo, temp.air, temp.rad, rel.hum, met, wme, air.velo, par.w.press)
   #' round(pmv, 2)
-  #' @author Christoffer Rasmussen, MSc in Engineering
+  #' @author Christoffer Rasmussen
 
   air.velo <- ifelse(air.velo < 0, 0, air.velo)
 

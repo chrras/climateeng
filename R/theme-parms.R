@@ -2,12 +2,12 @@ theme_parms <- function() {
   #' ggplot2 parameters
   #'
   #' Parameters for climateeng themes.
-  #' @return Returns a ggplot2 theme.
+  #' @return Returns a list of ggplot2 theme parameters.
   #' @keywords internal
   #' @export
   #' @examples
   #' theme_parms()
-  #' @author Christoffer Rasmussen, MSc in Engineering
+  #' @author Christoffer Rasmussen
 
   palette = brewer.pal("Greys", n=9)
 

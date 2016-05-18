@@ -16,13 +16,13 @@ Returns a vector of humidity ratios [kg/kg].
 }
 \description{
 Calculates the humidity ratio based on the enthalpy.
-Eq. 32 - ASHRAE Fundamentals Handbook, Psychrometrics.
+Eq. 32 - ASHRAE Fundamentals Handbook 2002, Psychrometrics.
 }
 \examples{
 hum_ratio_enthalpy(enthalpy = 30, temp.db = 25)
 }
 \author{
-Christoffer Rasmussen, MSc in Engineering
+Christoffer Rasmussen
 }
 \keyword{internal}
 

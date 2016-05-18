@@ -11,13 +11,13 @@ my_round <- function(x, n, type) {
   #' @examples
   #' my_round(24.9, 5, 'floor')
   #' my_round(c(24.9, 20.1, 25), 5, 'ceiling')
-  #' @author Christoffer Rasmussen, MSc in Engineering
-  
+  #' @author Christoffer Rasmussen
+
   if (type == 'ceiling') {
     x.rounded <- ceiling(x / n) * n
   } else if (type == 'floor') {
     x.rounded <- floor(x / n) * n
   }
-  
+
   return(x.rounded)
 }

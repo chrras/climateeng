@@ -14,13 +14,13 @@ Returns a vector of satuated water pressure over water and ice [kPa].
 }
 \description{
 Calculates the satuated water vapour pressure over water and ice.
-Eq.5 & 6 - ASHRAE Fundamentals Handbook, Psychrometrics.
+Eq.5 & 6 - ASHRAE Fundamentals Handbook 2002, Psychrometrics.
 }
 \examples{
 sat_w_press(temp.air = 25)
 }
 \author{
-Christoffer Rasmussen, MSc in Engineering
+Christoffer Rasmussen
 }
 \keyword{climate}
 \keyword{indoor}

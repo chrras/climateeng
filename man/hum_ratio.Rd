@@ -18,13 +18,13 @@ Returns a vector of humidity ratios [kg/kg].
 }
 \description{
 Calculates the humidity ratio from relative humidity and temperature.
-Eq. 25 & 12 - ASHRAE Fundamentals Handbook, Psychrometrics.
+Eq. 25 & 12 - ASHRAE Fundamentals Handbook 2002, Psychrometrics.
 }
 \examples{
 hum_ratio(rel.hum = 60, temp.air = 25, alt = 0)
 }
 \author{
-Christoffer Rasmussen, MSc in Engineering
+Christoffer Rasmussen
 }
 \keyword{climate}
 \keyword{indoor}

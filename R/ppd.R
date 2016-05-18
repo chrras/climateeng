@@ -43,7 +43,7 @@ ppd <- function(clo, temp.air, temp.rad, rel.hum, met = 1.2, wme = 0, air.velo =
   #'
   #' ppd <- ppd(clo, temp.air, temp.rad, rel.hum, met, wme, air.velo, partial.press)
   #' round(ppd, 0)
-  #' @author Christoffer Rasmussen, MSc in Engineering
+  #' @author Christoffer Rasmussen
 
   PMV <- pmv(clo, temp.air, temp.rad, rel.hum, met, wme, air.velo, partial.press)
   PPD = 100 - 95 * exp(-0.03353 * PMV^4 - 0.2179 * PMV^2)
