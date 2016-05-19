@@ -61,7 +61,7 @@ ppd <- ppd(clo, temp.air, temp.rad, rel.hum, met, wme, air.velo, partial.press)
 round(ppd, 0)
 }
 \author{
-Christoffer Rasmussen, MSc in Engineering
+Christoffer Rasmussen
 }
 \keyword{climate}
 \keyword{indoor}

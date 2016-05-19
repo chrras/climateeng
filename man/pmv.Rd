@@ -61,7 +61,7 @@ pmv <- pmv(clo, temp.air, temp.rad, rel.hum, met, wme, air.velo, par.w.press)
 round(pmv, 2)
 }
 \author{
-Christoffer Rasmussen, MSc in Engineering
+Christoffer Rasmussen
 }
 \keyword{climate}
 \keyword{indoor}

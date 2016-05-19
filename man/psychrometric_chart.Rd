@@ -47,7 +47,7 @@ psychrometric_chart(temp.db, hum.ratio, alpha = 1)
 psychrometric_chart(temp.db, hum.ratio, temp.min=5, mollier = TRUE, alpha = 1)
 }
 \author{
-Christoffer Rasmussen, MSc in Engineering
+Christoffer Rasmussen
 }
 \keyword{climate}
 \keyword{indoor}

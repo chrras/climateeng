@@ -13,7 +13,7 @@ enthalpy_intersect(enthalpy, alt = 0)
 }
 \value{
 Returns the dry-bulb temperature at which the enthalpy and
-  100 \% RH line intersects [degC].
+ 100 \% RH line intersects [degC].
 }
 \description{
 Calculates the intersection of RH 100 \% line and the enthalpy line.
