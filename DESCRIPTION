@@ -8,12 +8,14 @@ Maintainer: Christoffer Rasmussen <christofferrasmussen.1987@gmail.com>
 URL: https://github.com/chrras/climateeng
 BugReports: https://github.com/chrras/climateeng/issues
 Depends:
-    R (>= 3.2.3),
-    weights (>= 0.85),
-    ggplot2 (>= 2.1.0),
-    ggthemes (>= 3.0.2),
-    cowplot (>= 0.6.1),
-    RColorBrewer (>= 1.1-2)
+  R (>= 3.2.3),
+  weights (>= 0.85),
+  ggplot2 (>= 2.1.0),
+  ggthemes (>= 3.0.2),
+  cowplot (>= 0.6.1),
+  RColorBrewer (>= 1.1-2)
 Description: This package implements P. Ole Fangers thermal comfort indices PMV (Predicted Mean Vote) and PPD (Predicted Percentage Dissatisfied). The package is build on the BASIC code provided in ASHRAE 55-2010. The PMV and PPD functions are capable of handling single values as well as vector input.
-License: GPL (>= 2)
+License: GPL (>= 3)
+Year: 2015-2016
 RoxygenNote: 5.0.1
+LazyData: true
