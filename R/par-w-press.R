@@ -6,7 +6,6 @@ par_w_press <- function(hum.ratio, alt = 0) {
   #' @param hum.ratio Vector of humidity ratios [kg/kg].
   #' @param alt Vector of altitudes [m]. Defaults to 0 m (sea level).
   #' @return Returns a vector of partial water vapour pressure [kPa].
-  #' @keywords indoor climate
   #' @export
   #' @examples
   #' par_w_press(hum.ratio = 0.010)

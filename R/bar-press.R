@@ -6,7 +6,6 @@ bar_press <- function(alt = 0) {
   #' Eq. 3 - ASHRAE Fundamentals Handbook 2002, Psychrometrics.
   #' @param alt Vector of altitudes [m]. Defaults to 0 m (sea level).
   #' @return Returns a vector of barometric pressure [kPa].
-  #' @keywords indoor climate
   #' @export
   #' @examples
   #' bar_press()

@@ -9,7 +9,7 @@ theme_parms <- function() {
   #' theme_parms()
   #' @author Christoffer Rasmussen
 
-  palette = brewer.pal("Greys", n=9)
+  palette <- brewer.pal("Greys", n = 9)
 
   l <- list(
     color.background = palette[1],
@@ -17,7 +17,7 @@ theme_parms <- function() {
     color.axis.text = palette[6],
     color.axis.title = palette[7],
     color.title = palette[9],
-    size.line = .25,
+    size.line = 0.25,
     text.size.axis = 7,
     text.size.axis.title = 8,
     text.size.plot.title = 10

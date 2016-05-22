@@ -8,19 +8,24 @@ psychrometric_chart <- function(temp.db = NULL, hum.ratio = NULL,
   #' Plot psychrometric chart with or with data.
   #' @param temp.db Vector of dry-bulb temperatures [degC]. Defaults to NULL.
   #' @param hum.ratio Vector of humidity ratios [kg/kg]. Defaults to NULL.
-  #' @param temp.min Minimum value of temperature axis [degC]. Defaluts to -15 degC.
-  #' @param temp.max Maximum value of temperature axis [degC]. Defaluts to 30 degC.
-  #' @param humidity.max Maximum value of humidity axis [kg/kg]. Defaults to 0.020 kg/kg.
+  #' @param temp.min Minimum value of temperature axis [degC]. Defaluts to
+  #'  -15 degC.
+  #' @param temp.max Maximum value of temperature axis [degC]. Defaluts to
+  #'  30 degC.
+  #' @param humidity.max Maximum value of humidity axis [kg/kg]. Defaults to
+  #'  0.020 kg/kg.
   #' @param alt Vector of altitudes [m]. Defaults to 0 m (sea level).
-  #' @param mollier Boolean operator. Plot Mollier chart (tx-chart) or tx-chart. Defaults to FALSE.
+  #' @param mollier Boolean operator. Plot Mollier chart (tx-chart) or tx-chart.
+  #'  Defaults to FALSE.
   #' @param alpha Transparancy of the data points. Defaults to 0.25.
-  #' @param disable.warnings Some ignorable warnings appear when plotting the chart. To see these and eventually others disable.warnings should be FALSE. Defaults to TRUE.
+  #' @param disable.warnings Some ignorable warnings appear when plotting the
+  #'  chart. To see these and eventually others disable.warnings should be
+  #'  FALSE. Defaults to TRUE.
   #' @return Plots the psychrometric chart. If the error
   #' "TEXT_SHOW_BACKTRACE environmental variable.
   #' Error in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y,  :
   #' polygon edge not found"
   #' shows up. Try run psychrometric_chart() again.
-  #' @keywords indoor climate
   #' @export
   #' @examples
   #' psychrometric_chart()
@@ -29,7 +34,8 @@ psychrometric_chart <- function(temp.db = NULL, hum.ratio = NULL,
   #' hum.ratio <- c(0.005, 0.009, 0.004, 0.011, 0.004, 0.01)
   #' psychrometric_chart(temp.db, hum.ratio, alpha = 1)
   #'
-  #' psychrometric_chart(temp.db, hum.ratio, temp.min=5, mollier = TRUE, alpha = 1)
+  #' psychrometric_chart(temp.db, hum.ratio, temp.min=5, mollier = TRUE,
+  #'  alpha = 1)
   #' @author Christoffer Rasmussen
 
   # Plot parameters ---------------------------------------------------------
@@ -40,9 +46,9 @@ psychrometric_chart <- function(temp.db = NULL, hum.ratio = NULL,
   N <- 2000  # Number og line segments for stat_function lines.
 
   # Round temperature and humidity limits
-  temp.min <- my_round(temp.min, 5, 'floor')
-  temp.max <- my_round(temp.max, 5, 'ceiling')
-  humidity.max <- my_round(humidity.max, 0.005, 'ceiling')
+  temp.min <- my_round(temp.min, 5, "floor")
+  temp.max <- my_round(temp.max, 5, "ceiling")
+  humidity.max <- my_round(humidity.max, 0.005, "ceiling")
 
   # Temperature which RH annotation should be centered between
   temp.1 <- 20
@@ -50,16 +56,16 @@ psychrometric_chart <- function(temp.db = NULL, hum.ratio = NULL,
 
   # Aspect ratio
   if (mollier == F) {
-    asp <- (humidity.max / 0.005) / ((temp.max - temp.min) / 5)
+    asp <- (humidity.max / 0.005) / ( (temp.max - temp.min) / 5)
     deg <- 0
     k <- 1
   } else {
-    asp <- ((temp.max - temp.min) / 5) / (humidity.max / 0.005)
+    asp <- ( (temp.max - temp.min) / 5) / (humidity.max / 0.005)
     deg <- 90
     k <- -1
   }
   # Axis to filp. Depends on chart type.
-  axisToFlip <- 'y'
+  axis.to.flip <- "y"
 
   # Plot parameters
   theme <- theme_parms()
@@ -75,7 +81,9 @@ psychrometric_chart <- function(temp.db = NULL, hum.ratio = NULL,
 
     # Axis breaks
     scale_x_continuous(breaks = seq(temp.min, temp.max, 5)) +
-    scale_y_continuous(breaks = seq(0, humidity.max, 0.005), labels = rd(seq(0.0, humidity.max, 0.005), digits=3, add = F)) +
+    scale_y_continuous(breaks = seq(0, humidity.max, 0.005),
+                       labels = rd(seq(0.0, humidity.max, 0.005),
+                                   digits = 3, add = F)) +
 
     # Axis titles
     ylab(expression("Humidity ratio ("*kg[m]*"/"*kg[da]*")")) +
@@ -100,7 +108,7 @@ psychrometric_chart <- function(temp.db = NULL, hum.ratio = NULL,
     p <- p + coord_flip(ylim = c(-y_add, humidity.max + y_add),
                         xlim = c(temp.min - x_add, temp.max + x_add),
                         expand = F)
-    axisToFlip <- 'x'
+    axis.to.flip <- "x"
   }
 
 
@@ -201,8 +209,8 @@ psychrometric_chart <- function(temp.db = NULL, hum.ratio = NULL,
   # Enthalpy lines ----------------------------------------------------------
 
 
-  start <- my_round(enthalpy(temp.min, 0), 10, 'ceiling')
-  end <- my_round(enthalpy(temp.max, humidity.max), 10, 'floor')
+  start <- my_round(enthalpy(temp.min, 0), 10, "ceiling")
+  end <- my_round(enthalpy(temp.max, humidity.max), 10, "floor")
 
   # Add lines
   for (i in seq(start, end, 10)) {
@@ -228,7 +236,7 @@ psychrometric_chart <- function(temp.db = NULL, hum.ratio = NULL,
 
     # Add data points
     p <- p +
-      scale_color_gradient(low="#3F5151", high="#9B110E") +
+      scale_color_gradient(low = "#3F5151", high = "#9B110E") +
       geom_point(data = df.points,
                  aes(x = temp, y = hum),
                  size = 1.25,
@@ -274,13 +282,14 @@ psychrometric_chart <- function(temp.db = NULL, hum.ratio = NULL,
 # Annotation of enthalpy lines --------------------------------------------
 
 
-  start <- my_round(enthalpy(temp.min, 0), 10, 'ceiling')
-  end <- my_round(enthalpy(temp.max, humidity.max), 10, 'floor')
+  start <- my_round(enthalpy(temp.min, 0), 10, "ceiling")
+  end <- my_round(enthalpy(temp.max, humidity.max), 10, "floor")
 
   for (i in seq(start, end, 10)) {
 
     # Define label
-    if (enthalpy_intersect(i, alt) < temp.min + 2 | enthalpy_intersect(i, alt) > dewpoint(humidity.max, alt) - 0.5) {
+    if (enthalpy_intersect(i, alt) < temp.min + 2 |
+        enthalpy_intersect(i, alt) > dewpoint(humidity.max, alt) - 0.5) {
       label <- ""
     } else if (mollier == F) {
       if (i == 40) {
@@ -305,7 +314,9 @@ psychrometric_chart <- function(temp.db = NULL, hum.ratio = NULL,
                y = sat_hum_ratio(intersect, alt),
                size = theme$text.size.axis / FONT.SCALE,
                label =  label,
-               angle = deg + k * slope_rel_hum(intersect - 0.5, intersect + 0.5, 100),
+               angle = deg + k * slope_rel_hum(intersect - 0.5,
+                                               intersect + 0.5,
+                                               100),
                col = theme$color.axis.text)
   }
 
@@ -314,9 +325,9 @@ psychrometric_chart <- function(temp.db = NULL, hum.ratio = NULL,
 
   # Plot p with fliped axis
   if (disable.warnings == T) {
-    suppressWarnings(ggdraw(switch_axis_position(p, axis = axisToFlip)))
+    suppressWarnings(ggdraw(switch_axis_position(p, axis = axis.to.flip)))
   } else {
-    ggdraw(switch_axis_position(p, axis = axisToFlip))
+    ggdraw(switch_axis_position(p, axis = axis.to.flip))
   }
 
 

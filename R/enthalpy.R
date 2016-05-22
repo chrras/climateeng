@@ -6,7 +6,6 @@ enthalpy <- function(temp.db, hum.ratio) {
   #' @param temp.db Vector of dry bulb temperatures [degC].
   #' @param hum.ratio Vector of humidity ratios [kg/kg].
   #' @return Returns a vector of enthalpies [kJ/kg].
-  #' @keywords indoor climate
   #' @export
   #' @examples
   #' enthalpy(25, 0.010)

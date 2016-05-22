@@ -7,7 +7,6 @@ hum_ratio <- function(rel.hum, temp.air, alt = 0) {
   #' @param temp.air Vector of air temperatures [degC].
   #' @param alt Vector of altitudes [m]. Defaults to 0 m (sea level).
   #' @return Returns a vector of humidity ratios [kg/kg].
-  #' @keywords indoor climate
   #' @export
   #' @examples
   #' hum_ratio(rel.hum = 60, temp.air = 25, alt = 0)
@@ -19,5 +18,5 @@ hum_ratio <- function(rel.hum, temp.air, alt = 0) {
   p <- bar_press(alt)
   p.ws <- sat_w_press(temp.air)
 
-  return((-rel.hum) * w.s * (p - p.ws) / (rel.hum * p.ws - p))
+  return(-rel.hum * w.s * (p - p.ws) / (rel.hum * p.ws - p))
 }

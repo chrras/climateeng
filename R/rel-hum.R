@@ -7,7 +7,6 @@ rel_hum <- function(temp.air, hum.ratio, alt = 0) {
   #' @param hum.ratio Vector of humidity ratios [kg/kg]
   #' @param alt Vector of altitudes [m]. Defaults to 0 m (sea level).
   #' @return Returns a vector of relative humidities [\%].
-  #' @keywords indoor climate
   #' @export
   #' @examples
   #' rel_hum(temp.air = 25, hum.ratio = 0.005, alt = 500)
