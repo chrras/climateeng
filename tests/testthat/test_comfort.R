@@ -1,7 +1,7 @@
 library(climateeng)
 context("Comfort")
 
-test_that("Validate PMV and PPD according to ASHRAE 55-2010", {
+test_that("PMV and PPD validation (ASHRAE 55-2010)", {
   clo <- rep(c(1, 0.5), each = 3)
   temp.air <- c(19.6, 23.9, 21.2, 23.6, 27.9, 24.7)
   temp.rad <- temp.air
