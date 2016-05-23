@@ -19,3 +19,4 @@ License: GPL (>= 3)
 Year: 2015-2016
 RoxygenNote: 5.0.1
 LazyData: true
+Suggests: testthat
