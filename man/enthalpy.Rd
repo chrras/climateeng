@@ -28,6 +28,4 @@ density <- 1.2 # density of air (kg/m3)
 \author{
 Christoffer Rasmussen
 }
-\keyword{climate}
-\keyword{indoor}
 

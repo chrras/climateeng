@@ -13,19 +13,25 @@ psychrometric_chart(temp.db = NULL, hum.ratio = NULL, temp.min = -15,
 
 \item{hum.ratio}{Vector of humidity ratios [kg/kg]. Defaults to NULL.}
 
-\item{temp.min}{Minimum value of temperature axis [degC]. Defaluts to -15 degC.}
+\item{temp.min}{Minimum value of temperature axis [degC]. Defaluts to
+-15 degC.}
 
-\item{temp.max}{Maximum value of temperature axis [degC]. Defaluts to 30 degC.}
+\item{temp.max}{Maximum value of temperature axis [degC]. Defaluts to
+30 degC.}
 
-\item{humidity.max}{Maximum value of humidity axis [kg/kg]. Defaults to 0.020 kg/kg.}
+\item{humidity.max}{Maximum value of humidity axis [kg/kg]. Defaults to
+0.020 kg/kg.}
 
 \item{alt}{Vector of altitudes [m]. Defaults to 0 m (sea level).}
 
-\item{mollier}{Boolean operator. Plot Mollier chart (tx-chart) or tx-chart. Defaults to FALSE.}
+\item{mollier}{Boolean operator. Plot Mollier chart (tx-chart) or tx-chart.
+Defaults to FALSE.}
 
 \item{alpha}{Transparancy of the data points. Defaults to 0.25.}
 
-\item{disable.warnings}{Some ignorable warnings appear when plotting the chart. To see these and eventually others disable.warnings should be FALSE. Defaults to TRUE.}
+\item{disable.warnings}{Some ignorable warnings appear when plotting the
+chart. To see these and eventually others disable.warnings should be
+FALSE. Defaults to TRUE.}
 }
 \value{
 Plots the psychrometric chart. If the error
@@ -44,11 +50,10 @@ temp.db <- c(20, 23, 18, 20, 10, 27)
 hum.ratio <- c(0.005, 0.009, 0.004, 0.011, 0.004, 0.01)
 psychrometric_chart(temp.db, hum.ratio, alpha = 1)
 
-psychrometric_chart(temp.db, hum.ratio, temp.min=5, mollier = TRUE, alpha = 1)
+psychrometric_chart(temp.db, hum.ratio, temp.min=5, mollier = TRUE,
+ alpha = 1)
 }
 \author{
 Christoffer Rasmussen
 }
-\keyword{climate}
-\keyword{indoor}
 

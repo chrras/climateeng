@@ -26,6 +26,4 @@ hum_ratio(rel.hum = 60, temp.air = 25, alt = 0)
 \author{
 Christoffer Rasmussen
 }
-\keyword{climate}
-\keyword{indoor}
 

@@ -29,6 +29,4 @@ plot(dewpoint(hum.ratio = hum.ratio), hum.ratio,
 \author{
 Christoffer Rasmussen
 }
-\keyword{climate}
-\keyword{indoor}
 

@@ -25,6 +25,5 @@ slope_rel_hum(15, 20, 80)
 \author{
 Christoffer Rasmussen
 }
-\keyword{climate}
-\keyword{indoor}
+\keyword{internal}
 

@@ -26,6 +26,4 @@ density_air(temp.air = 25, hum.ratio = c(0, 0.01, 0.02))
 \author{
 Christoffer Rasmussen
 }
-\keyword{climate}
-\keyword{indoor}
 

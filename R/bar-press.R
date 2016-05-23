@@ -14,5 +14,5 @@ bar_press <- function(alt = 0) {
   #' @author Christoffer Rasmussen
 
   # Barometric pressure (eq. 3)
-  return(101.325 + (1 - 2.25577e-05 * alt) ** 5.2559)
+  return(101.325 * (1 - 2.25577e-05 * alt) ** 5.2559)
 }

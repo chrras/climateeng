@@ -25,6 +25,4 @@ bar_press(alt = 1000)
 \author{
 Christoffer Rasmussen
 }
-\keyword{climate}
-\keyword{indoor}
 

@@ -27,6 +27,4 @@ rel_hum(temp.air = seq(10, 20, 2), hum.ratio = 0.010)
 \author{
 Christoffer Rasmussen
 }
-\keyword{climate}
-\keyword{indoor}
 

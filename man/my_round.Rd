@@ -11,7 +11,8 @@ my_round(x, n, type)
 
 \item{n}{Nearest number to which the x-value should be rounded.}
 
-\item{type}{A string (either 'ceiling' or 'floor') to indicate if the number should be rounded up or down.}
+\item{type}{A string (either 'ceiling' or 'floor') to indicate if the
+number should be rounded up or down.}
 }
 \value{
 Returns a vector of rounded numbers.
@@ -20,8 +21,8 @@ Returns a vector of rounded numbers.
 Round up or down to nearest user specified number.
 }
 \examples{
-my_round(24.9, 5, 'floor')
-my_round(c(24.9, 20.1, 25), 5, 'ceiling')
+my_round(24.9, 5, "floor")
+my_round(c(24.9, 20.1, 25), 5, "ceiling")
 }
 \author{
 Christoffer Rasmussen

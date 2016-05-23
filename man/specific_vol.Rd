@@ -24,6 +24,4 @@ specific_vol(25, 0.010)
 \author{
 Christoffer Rasmussen
 }
-\keyword{climate}
-\keyword{indoor}
 

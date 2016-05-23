@@ -10,7 +10,8 @@ sat_w_press(temp.air)
 \item{temp.air}{Vector of air temperatures [degC].}
 }
 \value{
-Returns a vector of satuated water pressure over water and ice [kPa].
+Returns a vector of satuated water pressure over water and
+ ice [kPa].
 }
 \description{
 Calculates the satuated water vapour pressure over water and ice.
@@ -22,6 +23,4 @@ sat_w_press(temp.air = 25)
 \author{
 Christoffer Rasmussen
 }
-\keyword{climate}
-\keyword{indoor}
 

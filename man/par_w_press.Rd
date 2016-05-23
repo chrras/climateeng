@@ -28,6 +28,4 @@ par_w_press(hum.ratio, alt)
 \author{
 Christoffer Rasmussen
 }
-\keyword{climate}
-\keyword{indoor}
 

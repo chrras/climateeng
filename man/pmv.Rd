@@ -18,15 +18,18 @@ pmv(clo, temp.air, temp.rad, rel.hum, met = 1.2, wme = 0, air.velo = 0.1,
 
 \item{wme}{Vector of external work [met]. Defaults to 0 met.}
 
-\item{air.velo}{Vector of relative air velocities [m/s]. Defaults to 0.1 m/s.}
+\item{air.velo}{Vector of relative air velocities [m/s]. Defaults to
+0.1 m/s.}
 
-\item{par.w.press}{Vector of water vapour pressures in [Pa]. Defaults to 0 Pa.}
+\item{par.w.press}{Vector of water vapour pressures in [Pa]. Defaults to
+0 Pa.}
 }
 \value{
 Returns a vector of PMV values.
 }
 \description{
-Vectorized calculation of the predicted mean vote (PMV) according to ASHRAE 55-2010.
+Vectorized calculation of the predicted mean vote (PMV) according to
+ ASHRAE 55-2010.
 }
 \examples{
 temp.rad <- seq(20, 30)
@@ -43,7 +46,8 @@ wme <- 0
 air.velo <- 0.1
 par.w.press <- 0
 
-pmv <- pmv(clo, temp.air, temp.rad, rel.hum, met, wme, air.velo, par.w.press)
+pmv <- pmv(clo, temp.air, temp.rad, rel.hum, met, wme, air.velo,
+           par.w.press)
 round(pmv, 1)
 
 # Validation (DS/EN ISO 7730-2006, Annex D).
@@ -54,15 +58,15 @@ temp.rad <- c(22, 27, 27, 25.5, 25.5, 19, 23.5, 23.5, 21, 21, 22, 27, 27)
 rel.hum <- c(rep(c(60, 40), each = 5), rep(60, 3))
 met <- c(rep(1.2, 10), rep(1.6, 3))
 wme <- 0
-air.velo <- c(0.1, 0.1, 0.3, 0.1, 0.3, 0.1, 0.1, 0.3, 0.1, 0.3, 0.1, 0.1, 0.3)
+air.velo <- c(0.1, 0.1, 0.3, 0.1, 0.3, 0.1, 0.1, 0.3, 0.1, 0.3, 0.1, 0.1,
+              0.3)
 par.w.press <- 0
 
-pmv <- pmv(clo, temp.air, temp.rad, rel.hum, met, wme, air.velo, par.w.press)
+pmv <- pmv(clo, temp.air, temp.rad, rel.hum, met, wme, air.velo,
+           par.w.press)
 round(pmv, 2)
 }
 \author{
 Christoffer Rasmussen
 }
-\keyword{climate}
-\keyword{indoor}
 
