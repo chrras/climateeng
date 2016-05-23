@@ -12,8 +12,10 @@ enthalpy_intersect <- function(enthalpy, alt = 0) {
   #' enthalpy_intersect(enthalpy = 50)
   #' @author Christoffer Rasmussen
 
+  temp <- seq(-75, 75, 0.1)
+
   df.test <- data.frame(
-    temp = seq(-75, 75, 0.1),
+    temp = temp,
     enthalpy.diff =
       abs(-0.557341 * (temp - 0.994036 * enthalpy) / (temp + 1385.6) -
       sat_hum_ratio(temp, alt))
