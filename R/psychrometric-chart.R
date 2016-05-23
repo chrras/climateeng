@@ -329,7 +329,4 @@ psychrometric_chart <- function(temp.db = NULL, hum.ratio = NULL,
   } else {
     ggdraw(switch_axis_position(p, axis = axis.to.flip))
   }
-
-
-
 }
