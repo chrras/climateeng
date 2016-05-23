@@ -56,11 +56,11 @@ psychrometric_chart <- function(temp.db = NULL, hum.ratio = NULL,
 
   # Aspect ratio
   if (mollier == F) {
-    asp <- (humidity.max / 0.005) / ( (temp.max - temp.min) / 5)
+    asp <- (humidity.max / 0.005) / ((temp.max - temp.min) / 5)
     deg <- 0
     k <- 1
   } else {
-    asp <- ( (temp.max - temp.min) / 5) / (humidity.max / 0.005)
+    asp <- ((temp.max - temp.min) / 5) / (humidity.max / 0.005)
     deg <- 90
     k <- -1
   }
