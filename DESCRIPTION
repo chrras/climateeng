@@ -14,6 +14,7 @@ Suggests:
   ggplot2 (>= 2.1.0),
   ggthemes (>= 3.0.2),
   RColorBrewer (>= 1.1-2),
+  testthat (>= 1.0.2),
   weights (>= 0.85)
 Description: This package implements P. Ole Fangers thermal comfort indices PMV (Predicted Mean Vote) and PPD (Predicted Percentage Dissatisfied). The package is build on the BASIC code provided in ASHRAE 55-2010. The PMV and PPD functions are capable of handling single values as well as vector input.
 License: GPL (>= 3)
