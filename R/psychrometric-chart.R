@@ -38,6 +38,19 @@ psychrometric_chart <- function(temp.db = NULL, hum.ratio = NULL,
   #'  alpha = 1)
   #' @author Christoffer Rasmussen
 
+  # Check for package -------------------------------------------------------
+
+  if (!requireNamespace("ggplot2", quietly = TRUE)) {
+    stop("ggplot2 is needed for this function to work. Please install it.",
+         call. = FALSE)
+  } else if (!requireNamespace("cowplot", quietly = TRUE)) {
+    stop("cowplot is needed for this function to work. Please install it.",
+         call. = FALSE)
+  } else if (!requireNamespace("weights", quietly = TRUE)) {
+    stop("weights is needed for this function to work. Please install it.",
+         call. = FALSE)
+  }
+
   # Plot parameters ---------------------------------------------------------
 
   # Constants
@@ -74,20 +87,21 @@ psychrometric_chart <- function(temp.db = NULL, hum.ratio = NULL,
   # Create base plot --------------------------------------------------------
 
 
-  p <- ggplot(data.frame(x = c(temp.min, temp.max)), aes(x)) +
+  p <- ggplot2::ggplot(data.frame(x = c(temp.min, temp.max)), ggplot2::aes(x)) +
 
     # Add theme
     theme_climateeng_psy(asp) +
 
     # Axis breaks
-    scale_x_continuous(breaks = seq(temp.min, temp.max, 5)) +
-    scale_y_continuous(breaks = seq(0, humidity.max, 0.005),
-                       labels = rd(seq(0.0, humidity.max, 0.005),
-                                   digits = 3, add = F)) +
+    ggplot2::scale_x_continuous(
+      breaks = seq(temp.min, temp.max, 5)) +
+    ggplot2::scale_y_continuous(
+      breaks = seq(0, humidity.max, 0.005),
+      labels = weights::rd(seq(0.0, humidity.max, 0.005), digits = 3, add = F)) +
 
     # Axis titles
-    ylab(expression("Humidity ratio ("*kg[m]*"/"*kg[da]*")")) +
-    xlab(expression("Dry-bulb temperature ("*degree*C*")"))
+    ggplot2::ylab(expression("Humidity ratio ("*kg[m]*"/"*kg[da]*")")) +
+    ggplot2::xlab(expression("Dry-bulb temperature ("*degree*C*")"))
 
 
   # Trim chart --------------------------------------------------------------
@@ -96,18 +110,20 @@ psychrometric_chart <- function(temp.db = NULL, hum.ratio = NULL,
   x_add <- (temp.max - temp.min) * 0.003
   y_add <- (humidity.max) * 0.003
 
-  p <- p + coord_cartesian(xlim = c(temp.min - x_add, temp.max + x_add),
-                           ylim = c(-y_add, humidity.max + y_add),
-                           expand = F)
+  p <- p + ggplot2::coord_cartesian(
+             xlim = c(temp.min - x_add, temp.max + x_add),
+             ylim = c(-y_add, humidity.max + y_add),
+             expand = F)
 
 
   # Converts tx-chart to xt-chart -------------------------------------------
 
 
   if (mollier == T) {
-    p <- p + coord_flip(ylim = c(-y_add, humidity.max + y_add),
-                        xlim = c(temp.min - x_add, temp.max + x_add),
-                        expand = F)
+    p <- p + ggplot2::coord_flip(
+               ylim = c(-y_add, humidity.max + y_add),
+               xlim = c(temp.min - x_add, temp.max + x_add),
+               expand = F)
     axis.to.flip <- "x"
   }
 
@@ -118,24 +134,26 @@ psychrometric_chart <- function(temp.db = NULL, hum.ratio = NULL,
   for (i in seq(0, 100, 10)) {
     if (i %in% c(0, 100)) {
       # Border curve
-      p <- p + stat_function(fun = hum_ratio_rel_hum,
-                             args = list(alt = alt,
-                                         rel.hum = i,
-                                         hum.ratio.max = humidity.max),
-                             n = N,
-                             size = theme$size.line * LINE.MULTIPLIER,
-                             geom = "line",
-                             col = theme$color.grid.major)
+      p <- p + ggplot2::stat_function(
+                 fun = hum_ratio_rel_hum,
+                 args = list(alt = alt,
+                             rel.hum = i,
+                             hum.ratio.max = humidity.max),
+                 n = N,
+                 size = theme$size.line * LINE.MULTIPLIER,
+                 geom = "line",
+                 col = theme$color.grid.major)
     } else {
       # Other RH curves
-      p <- p + stat_function(fun = hum_ratio_rel_hum,
-                             args = list(alt = alt,
-                                         rel.hum = i,
-                                         hum.ratio.max = humidity.max),
-                             n = N,
-                             size = theme$size.line,
-                             geom = "line",
-                             col = theme$color.grid.major)
+      p <- p + ggplot2::stat_function(
+                 fun = hum_ratio_rel_hum,
+                 args = list(alt = alt,
+                             rel.hum = i,
+                             hum.ratio.max = humidity.max),
+                 n = N,
+                 size = theme$size.line,
+                 geom = "line",
+                 col = theme$color.grid.major)
     }
   }
 
@@ -146,20 +164,22 @@ psychrometric_chart <- function(temp.db = NULL, hum.ratio = NULL,
   for (i in seq(0.005, humidity.max, 0.005)) {
     if (i == humidity.max) {
       # Border curve
-      p <- p + geom_segment(x = temp.max,
-                            xend = dewpoint(hum.ratio = i, alt = alt),
-                            y = i,
-                            yend = i,
-                            col = theme$color.grid.major,
-                            size = theme$size.line * LINE.MULTIPLIER)
+      p <- p + ggplot2::geom_segment(
+                 x = temp.max,
+                 xend = dewpoint(hum.ratio = i, alt = alt),
+                 y = i,
+                 yend = i,
+                 col = theme$color.grid.major,
+                 size = theme$size.line * LINE.MULTIPLIER)
     } else {
       # Other RH curves
-      p <- p + geom_segment(x = temp.max,
-                            xend = dewpoint(hum.ratio = i, alt = alt),
-                            y = i,
-                            yend = i,
-                            size = theme$size.line,
-                            col = theme$color.grid.major)
+      p <- p + ggplot2::geom_segment(
+                 x = temp.max,
+                 xend = dewpoint(hum.ratio = i, alt = alt),
+                 y = i,
+                 yend = i,
+                 size = theme$size.line,
+                 col = theme$color.grid.major)
     }
   }
 
@@ -170,20 +190,22 @@ psychrometric_chart <- function(temp.db = NULL, hum.ratio = NULL,
   for (i in seq(temp.min, temp.max, 5)) {
     if (i %in% c(temp.min, temp.max)) {
       # Border curve
-      p <- p + geom_segment(x = i,
-                            xend = i,
-                            y = 0,
-                            yend = min(sat_hum_ratio(i, alt), humidity.max),
-                            col = theme$color.grid.major,
-                            size = theme$size.line * LINE.MULTIPLIER)
+      p <- p + ggplot2::geom_segment(
+                x = i,
+                xend = i,
+                y = 0,
+                yend = min(sat_hum_ratio(i, alt), humidity.max),
+                col = theme$color.grid.major,
+                size = theme$size.line * LINE.MULTIPLIER)
     } else {
       # Other RH curves
-      p <- p + geom_segment(x = i,
-                            xend = i,
-                            y = 0,
-                            yend = min(sat_hum_ratio(i, alt), humidity.max),
-                            size = theme$size.line,
-                            col = theme$color.grid.major)
+      p <- p + ggplot2::geom_segment(
+                x = i,
+                xend = i,
+                y = 0,
+                yend = min(sat_hum_ratio(i, alt), humidity.max),
+                size = theme$size.line,
+                col = theme$color.grid.major)
     }
   }
 
@@ -214,12 +236,14 @@ psychrometric_chart <- function(temp.db = NULL, hum.ratio = NULL,
 
   # Add lines
   for (i in seq(start, end, 10)) {
-    p <- p + stat_function(fun = hum_ratio_enthalpy,
-                           args = list(enthalpy = i, alt = alt),
-                           n = N,
-                           size = theme$size.line,
-                           geom = "line",
-                           col = theme$color.grid.major)
+    p <- p + ggplot2::stat_function(
+               fun = hum_ratio_enthalpy,
+               args = list(enthalpy = i,
+                           alt = alt),
+               n = N,
+               size = theme$size.line,
+               geom = "line",
+               col = theme$color.grid.major)
   }
 
 
@@ -236,11 +260,12 @@ psychrometric_chart <- function(temp.db = NULL, hum.ratio = NULL,
 
     # Add data points
     p <- p +
-      scale_color_gradient(low = "#3F5151", high = "#9B110E") +
-      geom_point(data = df.points,
-                 aes(x = temp, y = hum),
-                 size = 1.25,
-                 alpha = alpha)
+      ggplot2::scale_color_gradient(low = "#3F5151", high = "#9B110E") +
+      ggplot2::geom_point(
+        data = df.points,
+        ggplot2::aes(x = temp, y = hum),
+        size = 1.25,
+        alpha = alpha)
   }
 
 
@@ -269,13 +294,13 @@ psychrometric_chart <- function(temp.db = NULL, hum.ratio = NULL,
 
     # Add label
     p <- p +
-      annotate("text",
-               x = temp,
-               y = hum_ratio(i, temp),
-               size = theme$text.size.axis / FONT.SCALE,
-               label =  label,
-               angle = deg + k * slope_rel_hum(temp.1, temp.2, i),
-               col = theme$color.axis.text)
+      ggplot2::annotate("text",
+        x = temp,
+        y = hum_ratio(i, temp),
+        size = theme$text.size.axis / FONT.SCALE,
+        label =  label,
+        angle = deg + k * slope_rel_hum(temp.1, temp.2, i),
+        col = theme$color.axis.text)
   }
 
 
@@ -309,24 +334,25 @@ psychrometric_chart <- function(temp.db = NULL, hum.ratio = NULL,
 
     # Add label
     p <- p +
-      annotate("text",
-               x = intersect,
-               y = sat_hum_ratio(intersect, alt),
-               size = theme$text.size.axis / FONT.SCALE,
-               label =  label,
-               angle = deg + k * slope_rel_hum(intersect - 0.5,
-                                               intersect + 0.5,
-                                               100),
-               col = theme$color.axis.text)
+      ggplot2::annotate("text",
+        x = intersect,
+        y = sat_hum_ratio(intersect, alt),
+        size = theme$text.size.axis / FONT.SCALE,
+        label =  label,
+        angle = deg + k * slope_rel_hum(intersect - 0.5,
+                                        intersect + 0.5,
+                                        100),
+        col = theme$color.axis.text)
   }
 
   # Plot --------------------------------------------------------------------
 
 
   # Plot p with fliped axis
-  if (disable.warnings == T) {
-    suppressWarnings(ggdraw(switch_axis_position(p, axis = axis.to.flip)))
+  if (disable.warnings == TRUE) {
+    suppressWarnings(
+      cowplot::ggdraw(cowplot::switch_axis_position(p, axis = axis.to.flip)))
   } else {
-    ggdraw(switch_axis_position(p, axis = axis.to.flip))
+    cowplot::ggdraw(cowplot::switch_axis_position(p, axis = axis.to.flip))
   }
 }

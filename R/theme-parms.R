@@ -9,7 +9,16 @@ theme_parms <- function() {
   #' theme_parms()
   #' @author Christoffer Rasmussen
 
-  palette <- brewer.pal("Greys", n = 9)
+  # Check for package -------------------------------------------------------
+
+  if (!requireNamespace("RColorBrewer", quietly = TRUE)) {
+  stop("RColorBrewer is needed for this function to work. Please install it.",
+       call. = FALSE)
+  }
+
+  # Set theme parameters ----------------------------------------------------
+
+  palette <- RColorBrewer::brewer.pal("Greys", n = 9)
 
   l <- list(
     color.background = palette[1],
