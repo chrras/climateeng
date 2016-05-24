@@ -7,7 +7,6 @@ enthalpy_intersect <- function(enthalpy, alt = 0) {
   #' @return Returns the dry-bulb temperature at which the enthalpy and
   #'  100 \% RH line intersects [degC].
   #' @keywords internal
-  #' @export
   #' @examples
   #' enthalpy_intersect(enthalpy = 50)
   #' @author Christoffer Rasmussen

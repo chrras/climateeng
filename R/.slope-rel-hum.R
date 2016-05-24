@@ -7,7 +7,6 @@ slope_rel_hum <- function(temp.1, temp.2, rel.hum) {
   #' @param rel.hum Relative humidity line to find slope of [\%].
   #' @return Returns the slope angle [deg].
   #' @keywords internal
-  #' @export
   #' @examples
   #' slope_rel_hum(15, 20, 80)
   #' @author Christoffer Rasmussen

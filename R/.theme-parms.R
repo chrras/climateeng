@@ -4,7 +4,6 @@ theme_parms <- function() {
   #' Parameters for climateeng themes.
   #' @return Returns a list of ggplot2 theme parameters.
   #' @keywords internal
-  #' @export
   #' @examples
   #' theme_parms()
   #' @author Christoffer Rasmussen

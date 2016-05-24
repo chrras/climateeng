@@ -9,7 +9,6 @@ wetbulb_intersect <- function(temp.wb, alt = 0) {
   #' @return Returns a vector of dry-bulb temperatures at which the wet-bulb
   #'   temperature line intersects [degC].
   #' @keywords internal
-  #' @export
   #' @examples
   #' wetbulb_intersect(15)
   #' wetbulb_intersect(15, alt = 1000)

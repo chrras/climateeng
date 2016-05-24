@@ -8,7 +8,6 @@ my_round <- function(x, n, type) {
   #'  number should be rounded up or down.
   #' @return Returns a vector of rounded numbers.
   #' @keywords internal
-  #' @export
   #' @examples
   #' my_round(24.9, 5, "floor")
   #' my_round(c(24.9, 20.1, 25), 5, "ceiling")
