@@ -42,6 +42,12 @@ test_that("Moist air density validation", {
   expect_identical(round((1 + 0.0090) / density_air(47, 0.0090), 2), 0.92)
 })
 
+test_that("Specific volume validation", {
+  expect_identical(round(specific_vol(35, 0.0195, alt = 0), 2), 0.90)
+  expect_identical(round(specific_vol(13, 0.0075, alt = 0), 2), 0.82)
+  expect_identical(round(specific_vol(47, 0.0090, alt = 0), 2), 0.92)
+})
+
 test_that("Enthalpy intersect validation", {
   expect_equal(enthalpy_intersect(30, alt = 0), 10.3)
   expect_equal(enthalpy_intersect(20, alt = 0), 5.7)
