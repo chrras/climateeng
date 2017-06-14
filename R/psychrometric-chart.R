@@ -97,8 +97,8 @@ psychrometric_chart <- function(temp.db = NULL, hum.ratio = NULL,
       breaks = seq(temp.min, temp.max, 5)) +
     ggplot2::scale_y_continuous(
       breaks = seq(0, humidity.max, 0.005),
-      labels = weights::rd(seq(0.0, humidity.max, 0.005), digits = 3, add = F)) +
-
+      labels = weights::rd(seq(0.0, humidity.max, 0.005), digits = 3, add = F),
+      position = "right") +
     # Axis titles
     ggplot2::ylab(expression("Humidity ratio ("*kg[m]*"/"*kg[da]*")")) +
     ggplot2::xlab(expression("Dry-bulb temperature ("*degree*C*")"))
@@ -347,12 +347,9 @@ psychrometric_chart <- function(temp.db = NULL, hum.ratio = NULL,
 
   # Plot --------------------------------------------------------------------
 
-
-  # Plot p with fliped axis
   if (disable.warnings == TRUE) {
-    suppressWarnings(
-      cowplot::ggdraw(cowplot::switch_axis_position(p, axis = axis.to.flip)))
+    p
   } else {
-    cowplot::ggdraw(cowplot::switch_axis_position(p, axis = axis.to.flip))
+    p
   }
 }
