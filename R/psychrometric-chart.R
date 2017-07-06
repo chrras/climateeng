@@ -64,6 +64,13 @@ psychrometric_chart <- function(temp.db = NULL, hum.ratio = NULL,
   temp.1 <- 20
   temp.2 <- 25
 
+  # Temperature which RH annotation should be centered between
+  temp.3 <- 10
+  temp.4 <- 15
+
+  # Wetbulb line to annotate
+  wb <- 5
+
   # Aspect ratio
   if (mollier == F) {
     asp <- (humidity.max / 0.005) / ((temp.max - temp.min) / 5)
@@ -210,19 +217,20 @@ psychrometric_chart <- function(temp.db = NULL, hum.ratio = NULL,
   # Wet bulb temperature lines ----------------------------------------------
 
 
-  # temp_wb_min = temp.min
-  # while (wetbulb_intersect(temp_wb_min, alt) > temp.min) {
-  #   temp_wb_min <- temp_wb_min - 5
-  # }
-  #
-  # for (i in seq(temp_wb_min, temp.max - 5, 5)) {
-  #   p <- p + geom_segment(x = i,
-  #                         xend = wetbulb_intersect(i, alt),
-  #                         y = sat_hum_ratio(i, alt),
-  #                         yend = 0,
-  #                         size = theme$size.line,
-  #                         lty = "dashed")
-  # }
+  temp_wb_min = temp.min
+  while (wetbulb_intersect(temp_wb_min, alt) > temp.min) {
+    temp_wb_min <- temp_wb_min - 5
+  }
+
+  for (i in seq(temp_wb_min, temp.max - 5, 5)) {
+    p <- p + ggplot2::geom_segment(x = i,
+                          xend = wetbulb_intersect(i, alt),
+                          y = sat_hum_ratio(i, alt),
+                          yend = 0,
+                          size = theme$size.line,
+                          col = theme$color.grid.major,
+                          lty = "dotted")
+  }
 
 
   # Enthalpy lines ----------------------------------------------------------
@@ -232,7 +240,7 @@ psychrometric_chart <- function(temp.db = NULL, hum.ratio = NULL,
   end <- my_round(enthalpy(temp.max, humidity.max), 10, "floor")
 
   # Add lines
-  for (i in seq(start, end, 10)) {
+  for (i in seq(start, end, 5)) {
     p <- p + ggplot2::stat_function(
                fun = hum_ratio_enthalpy,
                args = list(enthalpy = i,
@@ -240,7 +248,8 @@ psychrometric_chart <- function(temp.db = NULL, hum.ratio = NULL,
                n = N,
                size = theme$size.line,
                geom = "line",
-               col = theme$color.grid.major)
+               col = theme$color.grid.major
+               )
   }
 
 
@@ -268,11 +277,10 @@ psychrometric_chart <- function(temp.db = NULL, hum.ratio = NULL,
 
 # Annotation of relative humidity lines -----------------------------------
 
-
   temp <- mean(c(temp.1, temp.2))
 
   if (mollier == F) {
-    seq <- seq(0, 80, 20)
+    seq <- seq(10, 90, 20)
   } else if (mollier == T) {
     seq <- seq(20, 100, 20)
   }
@@ -281,8 +289,8 @@ psychrometric_chart <- function(temp.db = NULL, hum.ratio = NULL,
   for (i in seq) {
 
     # Define label
-    if (i == 0) {
-      label <- "Relative humidity: 0 %\n"
+    if (i == 10) {
+      label <- "Relative humidity: 10 %\n"
     } else if (i == 100) {
       label <- "Relative humidity: 100 %\n"
     } else {
@@ -299,6 +307,43 @@ psychrometric_chart <- function(temp.db = NULL, hum.ratio = NULL,
         angle = deg + k * slope_rel_hum(temp.1, temp.2, i),
         col = theme$color.axis.text)
   }
+
+  # Annotation of wetbulb lines -----------------------------------
+
+  temp <- mean(c(temp.3, temp.4))
+
+  # if (mollier == F) {
+  #   seq <- seq(10, 90, 20)
+  # } else if (mollier == T) {
+  #   seq <- seq(20, 100, 20)
+  # }
+
+
+  # for (i in seq) {
+  #
+  #   # Define label
+  #   if (i == 10) {
+  #     label <- "Relative humidity: 10 %\n"
+  #   } else if (i == 100) {
+  #     label <- "Relative humidity: 100 %\n"
+  #   } else {
+  #     label <- paste0(i, " %\n")
+  #   }
+
+    # Add label
+    label <- as.character(expression("Wet-bulb temperature: 5 "*degree*C*""))
+    p <- p +
+      ggplot2::annotate("text",
+                        x = temp,
+                        y = sat_hum_ratio(wb)/wetbulb_intersect(wb) * (temp-wb)-0.00015,
+                        parse = TRUE,
+                        size = theme$text.size.axis / FONT.SCALE,
+                        label =  label,
+                        angle = deg + k * atan(-(sat_hum_ratio(wb)*1000) / (wetbulb_intersect(wb)-wb)) * 180/pi,
+                        col = theme$color.axis.text)
+  # }
+
+
 
 
 # Annotation of enthalpy lines --------------------------------------------
