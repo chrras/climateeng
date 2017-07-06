@@ -1,5 +1,5 @@
 Package: climateeng
-Version: 0.1.1
+Version: 0.1.2
 Title: Tools to Calculate Climatic Comfort Related Parameters
 Date: 2016-05-12
 Authors@R: c(person("Christoffer", "Rasmussen", role = c("aut", "cre"), email = "christofferrasmussen.1987@gmail.com"))
