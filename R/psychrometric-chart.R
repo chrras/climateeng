@@ -43,9 +43,6 @@ psychrometric_chart <- function(temp.db = NULL, hum.ratio = NULL,
   if (!requireNamespace("ggplot2", quietly = TRUE)) {
     stop("ggplot2 is needed for this function to work. Please install it.",
          call. = FALSE)
-  } else if (!requireNamespace("cowplot", quietly = TRUE)) {
-    stop("cowplot is needed for this function to work. Please install it.",
-         call. = FALSE)
   } else if (!requireNamespace("weights", quietly = TRUE)) {
     stop("weights is needed for this function to work. Please install it.",
          call. = FALSE)
